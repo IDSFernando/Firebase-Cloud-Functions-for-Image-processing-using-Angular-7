@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <img [src]="image" alt="Imagen generada" class="img-fluid">
+    </div>
+  </div>
+</div>
+<div class="row" style="margin-top: 2em; background-color: white; padding: 2em">
+  <div class="col-3" *ngFor="let item of labels">
+    <span class="badge badge-secondary">{{ item }}</span>
+  </div>
+</div>

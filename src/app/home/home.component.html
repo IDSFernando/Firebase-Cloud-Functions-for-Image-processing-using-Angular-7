@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+      <video #video id="video" style="display: none !important" width="100%" height="100%" autoplay></video>
+      <canvas #canvas style="display: none !important" id="canvas" width="800" height="600"></canvas>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <img *ngIf="downloadURL != null" [src]="downloadURL | async" alt="Imagen generada" class="img-fluid">
+      </div>
+    </div>
+    <br><br><br>
+  </div>
+  <div style="margin: 2em"></div>
+  <div class="row">
+    <div class="input-group mb-3">
+      <div class="custom-file">
+        <input
+          type="file"
+          class="custom-file-input"
+          id="inputGroupFile01"
+          aria-describedby="inputGroupFileAddon01"
+          [(ngModel)]="fileInput"
+          (change)="onFileSelected($event)"
+          >
+        <label class="custom-file-label" for="inputGroupFile01">Elige una imagen</label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="card" *ngIf="uploadPercent != null">Subiendo {{ uploadPercent | async }}%</div>
+    <a class="card" [href]="downloadURL | async">{{ downloadURL | async }}</a>
+  </div>
+
+  <div class="row">
+    <div class="col-3" *ngFor="let item of labels">
+      <span class="badge badge-secondary">{{ item }}</span>
+    </div>
+  </div>
+  
+  <button type="button" class="btn btn-dark" (click)="verificar()">Verificar</button>
+  <button type="button" class="btn btn-dark" (click)="takePhoto()">Tomar fotografía</button>
